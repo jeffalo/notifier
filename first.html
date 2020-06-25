@@ -76,7 +76,7 @@
         input: 'text',
         inputPlaceholder: 'jeffalo',
         inputValidator: (value) => {
-            let re = new RegExp('^\\w+$')
+            let re = new RegExp('^[\\w-]+$');
             if (!value) {
                 return 'You need to write something!'
             }

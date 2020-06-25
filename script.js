@@ -114,7 +114,7 @@ async function askUsername(){
     input: 'text',
     inputPlaceholder: 'jeffalo',
     inputValidator: (value) => {
-      let re = new RegExp('^\\w+$')
+      let re = new RegExp('^[\\w-]+$');
       if (!value) {
         return 'You need to write something!'
       }
@@ -123,6 +123,9 @@ async function askUsername(){
       }
       if(value.length > 20){
         return 'Invalid length'
+      }
+      if(usernames.includes(value)){
+        return 'Already is there :)'
       }
       if(!re.test(value)){
         return 'Invalid characters'
@@ -323,7 +326,7 @@ function createContextMenu(x,y, username){
     input: 'text',
     inputPlaceholder: 'jeffalo',
     inputValidator: (value) => {
-      let re = new RegExp('^\\w+$')
+      let re = new RegExp('^[\\w-]+$');
       if (!value) {
         return 'You need to write something!'
       }
@@ -332,6 +335,9 @@ function createContextMenu(x,y, username){
       }
       if(value.length > 20){
         return 'Invalid length'
+      }
+      if(usernames.includes(value)){
+        return 'Already is there :)'
       }
       if(!re.test(value)){
         return 'Invalid characters'
