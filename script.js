@@ -369,6 +369,41 @@ function openMsg(){
   window.open('https://scratch.mit.edu/messages', '_blank')
 }
 
+if(localStorage.getItem('first') == true || localStorage.getItem('first') == 'true'){
+  Swal.mixin({
+    progressSteps: ['1', '2', '3','4','5','6']
+  }).queue([
+    {
+      title: 'welcome to notifier',
+      text: 'i\'ll teach you the basics!'
+    },
+    {
+      title: 'open your messages',
+      text: 'double click anywhere to open your messages'
+    },
+    {
+      title: 'disable notifications',
+      imageUrl: 'assets/notifs.gif',
+      text: 'click the notifications toggle in the footer to disable notifications at anytime'
+    },
+    {
+      title: 'add remove or edit accounts',
+      text: 'press add to add a new user. right clicking on any user will allow you to delete or edit the account.'
+    },
+    {
+      title: 'disable notifications',
+      text: 'click the notifications toggle in the footer to disable notifications at anytime'
+    },
+    {
+      title: 'one last thing!',
+      imageUrl: 'assets/pin.gif',
+      text: 'notifier can only send notifications if it is open. you can ensure this is the case by pinning it as shown here.'
+    },
+  ]).then((result) => {
+    localStorage.setItem('first', false)
+  })
+}
+
 timeout()
 
 
