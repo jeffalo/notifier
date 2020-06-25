@@ -320,8 +320,8 @@ function createContextMenu(x,y, username){
  }
 
 if(localStorage.getItem('notif')){
-  document.getElementById('check').checked = (localStorage.getItem('notif')==true)
-  sendNotifs = localStorage.getItem('notif')
+  document.getElementById('check').checked = (localStorage.getItem('notif')=='true')
+  sendNotifs = (localStorage.getItem('notif')=='true')
 } else {
   localStorage.setItem('notif', true)
   document.getElementById('check').checked = true
