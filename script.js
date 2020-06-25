@@ -130,6 +130,9 @@ async function askUsername(){
       if(!re.test(value.toLowerCase())){
         return 'Invalid characters'
       }
+      if(usernames.length > 8){
+        return 'there is a temporary 9 account limit due to API restrictions. i\'m really sorry for the incovinence. this limit will be removed soon.'
+      } //remove when V3 comes out.
     }
     }).then((result) => {
       if (result.value) {
