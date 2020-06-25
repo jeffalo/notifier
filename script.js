@@ -187,8 +187,10 @@ function checkCount(user, isUserSwitch){
             icon: './assets/icon.png'
           }
 
+
           if(sendNotifs == true){
-            var notif = new Notification(data.count-count+' new messages!',options)
+            var newmsgs = data.count - count
+            var notif = new Notification(name+ ' has '+newmsgs+' new messages!',options)
             notif.onclick = function(event) {
               event.preventDefault(); // prevent the browser from focusing the Notification's tab
               window.open('https://scratch.mit.edu/messages', '_blank');
@@ -209,7 +211,6 @@ function checkCount(user, isUserSwitch){
         } else {
           link.innerText = name + ' ('+data.count+')'
         }
-        
       }
 
     });
