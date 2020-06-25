@@ -74,7 +74,22 @@
         title: 'what\'s your scratch username?',
         text:'don\'t worry this can be changed later',
         input: 'text',
-        inputPlaceholder: 'jeffalo'
+        inputPlaceholder: 'jeffalo',
+        inputValidator: (value) => {
+            let re = new RegExp('^\\w+$')
+            if (!value) {
+                return 'You need to write something!'
+            }
+            if(value.length < 3){
+                return 'Invalid length'
+            }
+            if(value.length > 20){
+                return 'Invalid length'
+            }
+            if(!re.test(value)){
+                return 'Invalid characters'
+            }
+        }
         })
 
         if (name) {

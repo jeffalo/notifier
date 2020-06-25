@@ -86,7 +86,7 @@ function createNameList(){
   adda.href = '#'
 
   add.addEventListener('click', e=>{
-    addUser()
+    askUsername()
   })
 
   add.appendChild(adda)
@@ -95,36 +95,44 @@ function createNameList(){
 }
 
 
-function addUser(){
+function addUser(name){
   messages.style.display = 'block'
 
   splash.style.display = 'none'
+  usernames.push(name)
+  createNameList()
+  switchToUser(name)
+  document.getElementById('user_'+name).classList.add('active')
+  localStorage.setItem('usernames',JSON.stringify(usernames))
+  //im not sure why i did it this way but don't ask i was tired and i want to go bed
+}
 
-  var name;
-  function askName(){
-    name = prompt('What\'s the username?')
-    name = name.toLowerCase()
-    if(usernames.includes(name)){
-      createNameList()
-      switchToUser(name)
-      document.getElementById('user_'+name).classList.add('active')
-    } else {
+async function askUsername(){
+  Swal.fire({
+    title: 'what\'s your scratch username?',
+    text:'don\'t worry this can be changed later',
+    input: 'text',
+    inputPlaceholder: 'jeffalo',
+    inputValidator: (value) => {
       let re = new RegExp('^\\w+$')
-      console.log(re)
-      if(name.length > 2 && name.length <20 && re.test(name)){
-        usernames.push(name)
-        createNameList()
-        switchToUser(name)
-        document.getElementById('user_'+name).classList.add('active')
-        localStorage.setItem('usernames',JSON.stringify(usernames))
-      } else {
-        askName()
+      if (!value) {
+        return 'You need to write something!'
+      }
+      if(value.length < 3){
+        return 'Invalid length'
+      }
+      if(value.length > 20){
+        return 'Invalid length'
+      }
+      if(!re.test(value)){
+        return 'Invalid characters'
       }
     }
-
-  }
-  askName()
-  //im not sure why i did it this way but don't ask i was tired and i want to go bed
+    }).then((result) => {
+      if (result.value) {
+          addUser(result.value)
+        }
+      })
 }
 
 function timeout() {
@@ -304,9 +312,32 @@ function createContextMenu(x,y, username){
   });
  }
 
- function askRename(name){
-  var newname = prompt('new name')
-  rename(name, newname)
+ async function askRename(name){
+  Swal.fire({
+    title: 'what\'s your scratch username?',
+    text:'don\'t worry this can be changed later',
+    input: 'text',
+    inputPlaceholder: 'jeffalo',
+    inputValidator: (value) => {
+      let re = new RegExp('^\\w+$')
+      if (!value) {
+        return 'You need to write something!'
+      }
+      if(value.length < 3){
+        return 'Invalid length'
+      }
+      if(value.length > 20){
+        return 'Invalid length'
+      }
+      if(!re.test(value)){
+        return 'Invalid characters'
+      }
+    }
+    }).then((result) => {
+      if (result.value) {
+          rename(name, result.value)
+        }
+      })
  }
 
  function rename(username, newname){
