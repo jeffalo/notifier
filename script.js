@@ -365,6 +365,10 @@ function updateNotifs(){
   localStorage.setItem('notif', sendNotifs)
 }
 
+function openMsg(){
+  window.open('https://scratch.mit.edu/messages', '_blank')
+}
+
 timeout()
 
 
