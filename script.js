@@ -146,12 +146,18 @@ function checkCount(user, isUserSwitch){
       if(name == user){
         //they are selected user
 
+
         if(data.count == -1){ //prevent -1
           messages.innerHTML = 0
-          document.title = '(0) notifier'
+          document.title = 'notifier'
         } else {
           messages.innerHTML = data.count
-          document.title = '('+data.count+') notifier'
+          if(data.count == 0){
+            document.title = 'notifier'
+          } else {
+            document.title = '('+data.count+') notifier'
+          }
+          favicon.badge(data.count);
         }
 
         //but still do the cool thing
@@ -164,6 +170,21 @@ function checkCount(user, isUserSwitch){
         
 
         //add notifications later because they are a pain
+        if(count < data.count && !isUserSwitch){
+          console.log('new mesage')
+          var options = {
+            body: 'click here to open the messages page!',
+            icon: './assets/icon.png'
+          }
+
+          var notif = new Notification(data.count-count+' new messages!',options)
+          notif.onclick = function(event) {
+            event.preventDefault(); // prevent the browser from focusing the Notification's tab
+            window.open('https://scratch.mit.edu/messages', '_blank');
+          }
+        }
+        count = data.count
+
       } else {
         //they are just a nobody
         console.log('a')
@@ -296,3 +317,8 @@ function createContextMenu(x,y, username){
 timeout()
 
 
+//favicon
+
+var favicon=new Favico({
+  animation:'none'
+});
