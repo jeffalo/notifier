@@ -226,6 +226,9 @@ function remove(user){
   } else {
     messages.style.display = 'none'
     splash.style.display = 'block'
+
+    favicon.badge(0)
+    document.title = 'notifier'
   }
   switchToUser(usernames[0])
 
