@@ -158,3 +158,13 @@ li a:hover:not(.active):not(.logo){
 .swal2-confirm{
   background-color: #3DDC84 !important;
 }
+
+.herohamp:visited{
+  color: black;
+  font-weight: 700;
+}
+
+.herohamp{
+  color: black;
+  font-weight: 700;
+}
