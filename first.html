@@ -94,7 +94,7 @@
 
         if (name) {
             var users = [];
-            users.push(name)
+            users.push(name.toLowerCase())
             localStorage.setItem('usernames', JSON.stringify(users))
             localStorage.setItem('first', true)
             document.location = './'
