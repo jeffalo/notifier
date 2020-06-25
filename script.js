@@ -183,7 +183,7 @@ function checkCount(user, isUserSwitch){
         
 
         //add notifications later because they are a pain
-        if(count < data.count && !isUserSwitch){
+        if(count < data.count && !isUserSwitch && !count == -1){
           console.log('new mesage')
           var options = {
             body: 'click here to open the messages page!',
