@@ -118,22 +118,22 @@ async function askUsername(){
       if (!value) {
         return 'You need to write something!'
       }
-      if(value.length < 3){
+      if(value.toLowerCase().length < 3){
         return 'Invalid length'
       }
-      if(value.length > 20){
+      if(value.toLowerCase().length > 20){
         return 'Invalid length'
       }
-      if(usernames.includes(value)){
+      if(usernames.includes(value.toLowerCase())){
         return 'Already is there :)'
       }
-      if(!re.test(value)){
+      if(!re.test(value.toLowerCase())){
         return 'Invalid characters'
       }
     }
     }).then((result) => {
       if (result.value) {
-          addUser(result.value)
+          addUser(result.value.toLowerCase())
         }
       })
 }
@@ -202,10 +202,9 @@ function checkCount(user, isUserSwitch){
 
         }
         count = data.count
-
+ 
       } else {
         //they are just a nobody
-        console.log('a')
 
         var link = document.getElementById('user_'+name)
 
@@ -330,22 +329,22 @@ function createContextMenu(x,y, username){
       if (!value) {
         return 'You need to write something!'
       }
-      if(value.length < 3){
+      if(value.toLowerCase().length < 3){
         return 'Invalid length'
       }
-      if(value.length > 20){
+      if(value.toLowerCase().length > 20){
         return 'Invalid length'
       }
-      if(usernames.includes(value)){
+      if(usernames.includes(value.toLowerCase())){
         return 'Already is there :)'
       }
-      if(!re.test(value)){
+      if(!re.test(value.toLowerCase())){
         return 'Invalid characters'
       }
     }
     }).then((result) => {
       if (result.value) {
-          rename(name, result.value)
+          rename(name, result.value.toLowerCase())
         }
       })
  }
