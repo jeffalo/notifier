@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notifier (first time)</title>
+    <link rel="stylesheet" href="first.css">
+    <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📢</text></svg>"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+</head>
+<body>
+    <h1 class='title'>📢 notifier</h1>
+    <p>the better scratch notifier</p>
+    <p>get notified every time you get a message on scratch</p><br><br>
+    <button onclick='begin()'>let's go!</button>
+    <br><br>
+    <p class='subtitle'>about notifier</p>
+    <p>with notifier you can:<br><br>- get near instant notifications when you get new messages in your Scratch account.<br>- see notification counts for multiple accounts.<br>- thats pretty much it but scratch notifiers list had 3 parts and i don't want mine looking shorter </p>
+    <p>i love world_languages's scratch notifier, but the design felt too cluttered. i decided to make a minimal notifier for my own use and hopefully you might also find it useful.</p>
+    <br><br><p>notifier was developed by <a href='https://scratch.mit.edu/users/jeffalo'>@Jeffalo</a>, but most thanks go to <a href='https://scratch.mit.edu/users/herohamp'>@herohamp</a> and <a href='https://scratch.mit.edu/users/World_Languages'>@World_Languages</a> for the api and original design. this is all open source.</p>
+</body>
+<script>
+    if(localStorage.getItem('usernames')){
+        //they lied and came here on purpose
+        document.location.href = './'
+    }
+
+    function begin(){
+        notifs()
+    }
+    function notifs() {
+        if(Notification.permission == 'default'){
+            Notification.requestPermission();
+            swal.fire({
+                title: "please allow notifications",
+                text: "you will be able to disable them later.",
+            });
+            checkLoop = setInterval(function() {
+                if(Notification.permission === "granted") {
+                    makeUser()
+                    clearInterval(checkLoop);
+                }
+                if(Notification.permission == 'denied'){
+                    makeUser()
+                    clearInterval(checkLoop);
+                }
+            }, 500); //credit to World_Languags for this code i think i know what it does
+        }
+        if(Notification.permission == 'granted'){
+            makeUser()
+        }
+        if(Notification.permission == 'denied'){
+            swal.fire({
+                title: 'notifications blocked',
+                text: 'some functionality will be limited.',
+            }).then((r)=>{
+                makeUser()
+            })
+            
+        }
+    }
+
+    async function makeUser(){
+        const { value: name } = await Swal.fire({
+        title: 'what\'s your scratch username?',
+        text:'don\'t worry this can be changed later',
+        input: 'text',
+        inputPlaceholder: 'jeffalo'
+        })
+
+        if (name) {
+            var users = [];
+            users.push(name)
+            localStorage.setItem('usernames', JSON.stringify(users))
+            document.location = './'
+        }
+    }
+</script>
+</html>

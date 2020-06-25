@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>notifier</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/odometer@0.4.8/odometer.min.js"></script>
+    <link rel="stylesheet" href="odometer.css">
+    <link
+    rel="icon"
+    href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📢</text></svg>"
+  />
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
+
+</head>
+<body>
+
+    <div class="box">
+        <div class='header'>
+          <ul id='namelist'><li><a href="./index.html" class="active">Home</a></li><li><a href="./news.html">News</a></li><li><a href="./memes.html">Memes</a></li><li><a href="./contact.html">Contact</a></li><li><a href="./about.html">About</a></li></ul>
+        </div>
+        <div class="content">
+          <p>
+            <p class='odometer'id='messages'>0</p>
+            <p id='splash' class='splash' style='display:none'>press add to add your account</p>
+          </p>
+        </div>
+        <div class="footer">
+          <p><b>a jeffalo project</b> inspired by world_languages | api from herohamp</p>
+        </div>
+      </div>
+
+      <div class="context-menu" id="context-menu">
+        <div id="menu-title" class="menu-title">Title</div>
+        <div id="renameBtn"class="menu-option">Change</div>
+        <div id="deleteBtn" class="menu-option">Delete</div>
+    </div>
+  </div>
+</body>
+<script src="script.js"></script>
+</html>

@@ -1,0 +1,148 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;700&display=swap');
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.box {
+  display: flex;
+  flex-flow: column;
+  height: 100%;
+}
+
+.box p,h1{
+    margin: 10px
+}
+
+.box .header {
+    flex: 0 1 auto;
+    background-color: rgb(50, 64, 82);
+    color: white;
+    box-shadow: 0 0 20px 0px #3DDC84;
+}
+
+.box .content {
+  flex: 1 1 auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 100px;
+  font-weight: 100;
+}
+
+.splash{
+  font-size: 50px;
+}
+
+.box .footer {
+  flex: 0 1 40px;
+}
+
+#username{
+  display: inline;
+  line-break: initial;
+}
+
+.user{
+  cursor: pointer;
+  text-decoration: underline;
+}
+
+#add{
+  cursor: pointer;
+}
+
+.selected{
+  text-decoration: none;
+  /*font-weight: 700;*/
+  color:black;
+  background-color: #3DDC84;;
+}
+
+ul{
+  list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    font-weight: bold;
+    background-color: rgb(50, 64, 82);
+}
+
+li{
+  float: left;
+}
+
+li a{
+  display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    transition: background-color 250ms;
+}
+
+li .active{
+  color: rgb(11, 43, 25);
+    background-color: #3DDC84;
+}
+
+li a:hover:not(.active):not(.logo){
+  background-color: rgb(32, 41, 53);
+}
+
+
+.context-menu {
+  width: 150px;
+  z-index: 1;
+  box-shadow: 0 0 10px 0px black;
+  position: fixed;
+  display: none;
+  transition: 0.2s display ease-in-out;
+  background-color: white;
+  transition: 100ms;
+}
+
+#swal-safe{
+  position: fixed;
+}
+
+.menu-option{
+  padding: 20px;
+  width: 100%;
+  transition: 250ms;
+  font-weight: normal;
+  cursor: pointer;
+}
+
+.menu-title{
+  padding: 20px;
+  width: 100%;
+  transition: 250ms;
+  font-weight: bold;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.menu-option:hover{
+  background-color: rgb(216, 216, 216);
+}
+
+.menu-option{
+  background-color: #191920;
+}
+
+.menu-title{
+  background-color: #191920;
+}
+
+.context-menu div{
+  color: white;
+  background-color: #191920;
+}
+
+.context-menu div:hover:not(.menu-title){
+  background-color: #3d3d4d;
+}
