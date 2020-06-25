@@ -4,6 +4,8 @@ var splash = document.getElementById('splash')
 
 var count;
 
+var sendNotifs = true
+
 var usernames = ['jeffalo']
 
 //load users from localstorage
@@ -177,11 +179,14 @@ function checkCount(user, isUserSwitch){
             icon: './assets/icon.png'
           }
 
-          var notif = new Notification(data.count-count+' new messages!',options)
-          notif.onclick = function(event) {
-            event.preventDefault(); // prevent the browser from focusing the Notification's tab
-            window.open('https://scratch.mit.edu/messages', '_blank');
+          if(sendNotifs == true){
+            var notif = new Notification(data.count-count+' new messages!',options)
+            notif.onclick = function(event) {
+              event.preventDefault(); // prevent the browser from focusing the Notification's tab
+              window.open('https://scratch.mit.edu/messages', '_blank');
+            }
           }
+
         }
         count = data.count
 
@@ -313,6 +318,21 @@ function createContextMenu(x,y, username){
    localStorage.setItem('usernames',JSON.stringify(usernames))
    
  }
+
+if(localStorage.getItem('notif')){
+  document.getElementById('check').checked = (localStorage.getItem('notif')==true)
+  sendNotifs = localStorage.getItem('notif')
+} else {
+  localStorage.setItem('notif', true)
+  document.getElementById('check').checked = true
+  sendNotifs = true
+}
+
+
+function updateNotifs(){
+  sendNotifs = document.getElementById('check').checked
+  localStorage.setItem('notif', sendNotifs)
+}
 
 timeout()
 
