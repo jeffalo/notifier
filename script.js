@@ -209,7 +209,12 @@ function checkCount(user, isUserSwitch){
           }
 
         }
-        count = data.count
+        if(count == -1){
+          count = 0
+        } else {
+          count = data.count
+        }
+
  
       } else {
         //they are just a nobody
