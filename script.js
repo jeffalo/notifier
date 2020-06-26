@@ -197,12 +197,7 @@ function checkCount(user, isUserSwitch){
           if(sendNotifs == true){
             var newmsgs = data.count - count
 
-            var msgormsgs
-            if(newmsgs == 1){
-              msgormsgs = 'message'
-            } else {
-              msgormsgs = 'messages'
-            }
+            let msgormsgs = newmsgs == 1? 'message' : 'messages';
 
             console.log(msgormsgs)
 
