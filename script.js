@@ -186,7 +186,7 @@ function checkCount(user, isUserSwitch){
         
 
         //add notifications later because they are a pain
-        if(count < data.count && !isUserSwitch && !count == -1){
+        if(count < data.count && !isUserSwitch){
           console.log('new mesage')
           var options = {
             body: 'click here to open the messages page!',
@@ -196,7 +196,17 @@ function checkCount(user, isUserSwitch){
 
           if(sendNotifs == true){
             var newmsgs = data.count - count
-            var notif = new Notification(name+ ' has '+newmsgs+' new messages!',options)
+
+            var msgormsgs
+            if(newmsgs == 1){
+              msgormsgs = 'message'
+            } else {
+              msgormsgs = 'messages'
+            }
+
+            console.log(msgormsgs)
+
+            var notif = new Notification(name+ ' has '+newmsgs+' new '+msgormsgs+'!',options)
             notif.onclick = function(event) {
               event.preventDefault(); // prevent the browser from focusing the Notification's tab
               window.open('https://scratch.mit.edu/messages', '_blank');
