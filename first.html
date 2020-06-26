@@ -39,6 +39,7 @@
     <a href='#' class='herohamp' onclick='privacy()'>privacy policy</a>
 </body>
 <script>
+
     if(localStorage.getItem('usernames')){
         //they lied and came here on purpose
         document.location.href = './'
@@ -54,7 +55,7 @@
                 title: "please allow notifications",
                 text: "you will be able to disable them later.",
             });
-            checkLoop = setInterval(function() {
+            var checkLoop = setInterval(function() {
                 if(Notification.permission === "granted") {
                     makeUser()
                     clearInterval(checkLoop);
