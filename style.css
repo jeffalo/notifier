@@ -176,3 +176,7 @@ li a:hover:not(.active):not(.logo){
   right:10px;
   padding: 100px;
 }
+
+.swal2-validation-message{
+  font-weight: 500 !important;
+}
