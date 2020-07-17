@@ -2,11 +2,15 @@ var messages = document.getElementById('messages')
 
 var splash = document.getElementById('splash')
 
-var count;
+var main = document.getElementById('main')
+
+var checkbox = document.getElementById('check')
 
 var sendNotifs = true
 
 var usernames = ['jeffalo']
+
+var oldMessageCounts = []
 
 //load users from localstorage
 var namelist = document.getElementById('namelist')
@@ -14,7 +18,7 @@ var namelist = document.getElementById('namelist')
 
 if(localStorage.getItem('usernames')){
   //yes usernames
-  console.log(localStorage.getItem(usernames))
+  console.log(localStorage.getItem('usernames'))
   usernames = JSON.parse(localStorage.getItem('usernames'))
 
   createNameList()
@@ -185,8 +189,8 @@ function checkCount(user, isUserSwitch){
         }
         
 
-        //add notifications later because they are a pain
-        if(count < data.count && !isUserSwitch){
+        //add notifications later because they are a pain yay i did
+        if(oldMessageCounts[name] < data.count && !isUserSwitch){
           console.log('new mesage')
           var options = {
             body: 'click here to open the messages page!',
@@ -195,29 +199,29 @@ function checkCount(user, isUserSwitch){
 
 
           if(sendNotifs == true){
-            var newmsgs = data.count - count
+            if(data.count == -1){
+              console.log('oh')
+            } else {
+              var newmsgs = data.count - oldMessageCounts[name]
 
-            let msgormsgs = newmsgs == 1? 'message' : 'messages';
-
-            console.log(msgormsgs)
-
-            var notif = new Notification(name+ ' has '+newmsgs+' new '+msgormsgs+'!',options)
-            notif.onclick = function(event) {
-              event.preventDefault(); // prevent the browser from focusing the Notification's tab
-              window.open('https://scratch.mit.edu/messages', '_blank');
+              let msgormsgs = newmsgs == 1? 'message' : 'messages';
+  
+              console.log(msgormsgs)
+  
+              var notif = new Notification(name+ ' has '+newmsgs+' new '+msgormsgs+'!',options)
+              notif.onclick = function(event) {
+                event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                window.open('https://scratch.mit.edu/messages', '_blank');
+              }
             }
           }
 
         }
-        if(count == -1){
-          count = 0
-        } else {
-          count = data.count
-        }
 
+        oldMessageCounts[name] = data.count
  
       } else {
-        //they are just a nobody
+        //they are just a nobody - edit what the heck does this mean - edit i think it means they're not the selected user
 
         var link = document.getElementById('user_'+name)
 
@@ -226,8 +230,38 @@ function checkCount(user, isUserSwitch){
         } else {
           link.innerText = name + ' ('+data.count+')'
         }
-      }
 
+        if(oldMessageCounts[name] < data.count && !isUserSwitch){
+          console.log('new mesage')
+          var options = {
+            body: '(alt account) click here to open the messages page!',
+            icon: './assets/icon.png'
+          }
+
+
+          if(sendNotifs == true){
+            if(data.count == -1){
+              console.log('oh')
+            } else {
+              var newmsgs = data.count - oldMessageCounts[name]
+
+              let msgormsgs = newmsgs == 1? 'message' : 'messages';
+  
+              console.log(msgormsgs)
+  
+              var notif = new Notification(name+ ' has '+newmsgs+' new '+msgormsgs+'!',options)
+              notif.onclick = function(event) {
+                event.preventDefault(); // prevent the browser from focusing the Notification's tab
+                window.open('https://scratch.mit.edu/messages', '_blank');
+              }
+            }
+          }
+
+        }
+
+        oldMessageCounts[name] = data.count
+        console.table(oldMessageCounts)
+      }
     });
   })
 }
@@ -432,6 +466,15 @@ function privacy(){
     text: 'notifier uses the following services:\ngithub pages, google analytics, google fonts, jsdelivr please refer to their privacy policies and terms of services for their privacy policies and terms of services. notifier uses a api run by scratcher @herohamp for the message counts. please contact him for details.'
   })
 }
+
+main.addEventListener('dblclick', e=>{
+  openMsg()
+})
+
+checkbox.addEventListener('dblclick', e=>{
+  e.stopPropagation()
+})
+
 
 timeout()
 

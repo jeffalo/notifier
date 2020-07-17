@@ -29,20 +29,21 @@
 </script>
 
 </head>
-<body ondblclick="openMsg()">
+<body>
 
     <div class="box">
         <div class='header'>
-          <ul id='namelist'><li><a href="./index.html" class="active">something</a></li><li><a href="./news.html">went</a></li><li><a href="./memes.html">wrong</a></li><li><a href="./contact.html">check</a></li><li><a href="./about.html">js</a></li></ul>
+          <ul id='namelist'><li><a href="./index.html" class="active">something</a></li><li><a href="./news.html">went</a></li><li><a href="./memes.html">wrong</a></li><li><a href="./contact.html">check</a></li><li><a href="./about.html">js console and tell me what it says</a></li></ul>
         </div>
-        <div class="content">
+        <div id='main' class="content">
+          <input id='check' name='notif' checked onclick='updateNotifs()'class='check' type='checkbox'><span class="checkmark"></span>
           <p>
             <p class='odometer'id='messages'>0</p>
             <p id='splash' class='splash' style='display:none'>press add to add your account</p>
           </p>
         </div>
         <div class="footer">
-          <p><b>a jeffalo project</b> inspired by world_languages | <a class='herohamp' href='https://hamptonmoore.com'>api from herohamp</a> | <a href='#' class='herohamp' onclick='privacy()'>privacy</a> | notifications <input id='check' checked onclick='updateNotifs()'class='check' type='checkbox'></p>
+          <p><b>a jeffalo project</b> inspired by world_languages | <a class='herohamp' href='https://hamptonmoore.com'>api from herohamp</a> | <a href='#' class='herohamp' onclick='privacy()'>privacy</a></p>
         </div>
       </div>
 
