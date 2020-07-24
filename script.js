@@ -163,6 +163,10 @@ function checkCount(user, isUserSwitch){
     .then(response => response.json())
     .then(data => {
 
+      if(data.count == -1){
+        data.count = 0
+      }
+
       if(name == user){
         //they are selected user
 
