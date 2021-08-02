@@ -467,7 +467,7 @@ if(localStorage.getItem('first') == true || localStorage.getItem('first') == 'tr
 function privacy(){
   swal.fire({
     title:'privacy policy',
-    text: 'notifier uses the following services:\ngithub pages, google analytics, google fonts, jsdelivr please refer to their privacy policies and terms of services for their privacy policies and terms of services. notifier uses a api run by scratcher @herohamp for the message counts. please contact him for details.'
+    text: 'notifier uses the following services:\ngithub pages, google fonts, jsdelivr please refer to their privacy policies and terms of services for their privacy policies and terms of services. notifier uses a api run by scratcher @herohamp for the message counts. please contact him for details.'
   })
 }
 
