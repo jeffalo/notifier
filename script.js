@@ -150,7 +150,7 @@ function timeout() {
       //check mesage count
       checkCount(username,false)
       timeout();
-  }, 5000);
+  }, 20000);
 }
 
 function checkCount(user, isUserSwitch){
